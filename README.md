@@ -53,7 +53,7 @@ For stronger supply-chain pinning, replace `@v1` with the immutable commit SHA b
 | Output | Description |
 | --- | --- |
 | `artifact-url` | Stable named URL that advances after each accepted publication. |
-| `immutable-artifact-url` | Immutable URL for this exact publication. |
+| `immutable-artifact-url` | Legacy run-specific URL for this publication. Once replaced, its Artifact row and bytes are deleted after a 24-hour grace; use `artifact-url` for durable links. |
 | `artifact-id` | Artifact Share ID for this publication. |
 | `sha256` | SHA-256 recorded by Artifact Share. |
 

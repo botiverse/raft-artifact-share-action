@@ -25,7 +25,7 @@ outputs:
     description: Stable named Artifact Share URL.
     value: ${{ steps.publish.outputs.artifact-url }}
   immutable-artifact-url:
-    description: Immutable backing Artifact URL for this publication.
+    description: Run-specific URL retained until 24 hours after this publication is replaced.
     value: ${{ steps.publish.outputs.immutable-artifact-url }}
   artifact-id:
     description: Artifact ID.
