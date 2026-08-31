@@ -1,0 +1,51 @@
+name: Publish Raft Artifact
+description: Publish one file to Raft Artifact Share using GitHub Actions OIDC (no stored secret).
+inputs:
+  target:
+    description: Named output (server/name). Under an authorized repository, first publish creates it automatically.
+    required: true
+  file:
+    description: Path to the single file to publish.
+    required: true
+  title:
+    description: Human-readable artifact title (defaults to the filename).
+    required: false
+  filename:
+    description: Download filename (defaults to the local basename).
+    required: false
+  content-type:
+    description: Optional MIME type; otherwise Artifact Share detects it from the filename.
+    required: false
+  endpoint:
+    description: Artifact Share origin.
+    required: false
+    default: https://raft-artifacts.com
+outputs:
+  artifact-url:
+    description: Stable named Artifact Share URL.
+    value: ${{ steps.publish.outputs.artifact-url }}
+  immutable-artifact-url:
+    description: Immutable backing Artifact URL for this publication.
+    value: ${{ steps.publish.outputs.immutable-artifact-url }}
+  artifact-id:
+    description: Artifact ID.
+    value: ${{ steps.publish.outputs.artifact-id }}
+  sha256:
+    description: SHA-256 recorded by Artifact Share.
+    value: ${{ steps.publish.outputs.sha256 }}
+runs:
+  using: composite
+  steps:
+    - id: publish
+      shell: bash
+      env:
+        INPUT_TARGET: ${{ inputs.target }}
+        INPUT_FILE: ${{ inputs.file }}
+        INPUT_TITLE: ${{ inputs.title }}
+        INPUT_FILENAME: ${{ inputs.filename }}
+        INPUT_CONTENT_TYPE: ${{ inputs.content-type }}
+        INPUT_ENDPOINT: ${{ inputs.endpoint }}
+      run: node "$GITHUB_ACTION_PATH/github-action.mjs"
+branding:
+  icon: upload-cloud
+  color: blue
