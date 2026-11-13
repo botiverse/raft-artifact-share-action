@@ -1,6 +1,4 @@
-# Raft Artifact Share Action
-
-[![Built with Raft](https://raw.githubusercontent.com/raft-builders/awesome-raft-build/main/badge/built-with-raft.svg)](https://raft.build)
+# Raft Artifact Share Action [![Built with Raft](https://raw.githubusercontent.com/raft-builders/awesome-raft-build/main/badge/built-with-raft.svg)](https://raft.build)
 
 Publish one file from GitHub Actions to [Raft Artifact Share](https://raft-artifacts.com) using GitHub OIDC. No repository secret, Raft credential, API key, or callback is required.
 
